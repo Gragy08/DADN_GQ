@@ -205,16 +205,16 @@ console.log(`Tuổi thọ tính bằng giờ Lh = ${tuoiThoTinhBangGio_Lh2} (gi�
 // Truong hop cua TRAN
 
 // Chương 4 phần 1.1
-let soVongQuay_n = 978.3;
+let soVongQuay_n = 486.6666667;
 let thoiGianLamViec_Lh = 4000;
 
 // Lấy từ 5.2 chương 3
-const RAx = 1271.72;
-const RAy = 326.59;
-const RCx = 1882.66;
-const RCy = 2431.66;
+const RAx = 62.2004;
+const RAy = 524.616074;
+const RCx = 2519.932041;
+const RCy = 2169.525912;
 
-let lucDocTrucCuaTrucVit_Fa1 = 7578.24; // 2.12 chuong 2
+let lucDocTrucCuaTrucVit_Fa1 = 7402.094271; // 2.12 chuong 2
 let lucDocTrucBanhVit_Fa2 = 2905.04; //2.12 chuong 2
 
 const lucHuongTam_FAr = parseFloat(Math.sqrt(RAx**2 + RAy**2).toFixed(2));
@@ -281,7 +281,7 @@ console.log(`Khả năng tải trọng động Ctt = ${khaNangTaiTrongDong_Ctt} 
 khaNangTaiTrong_C7308 = khaNangTaiTrong_C7308 * 1000;
 
 console.log(`
-  Vì Ctt > C (98181.5 > ${khaNangTaiTrong_C7308})  => Ổ lăn không thỏa điều kiện đã chọn của tải trọng động => Ta chọn lại ổ lăn
+  Vì Ctt < C ( ${khaNangTaiTrongDong_Ctt} < ${khaNangTaiTrong_C7308})  => Ổ lăn không thỏa điều kiện đã chọn của tải trọng động => Ta chọn lại ổ lăn
 `)
 // Hết Chương 4 phần 1.1
 
@@ -303,8 +303,9 @@ console.log(`L = ${khaNangTaiTrongDong_L} (vòng)`);
 khaNangTaiTrongDong_Ctt = parseFloat((taiTrongQuyUoc_Q * Math.pow(khaNangTaiTrongDong_L, 3/10)).toFixed(2));
 console.log(`Khả năng tải trọng động Ctt = ${khaNangTaiTrongDong_Ctt} (N)`);
 
+khaNangTaiTrong_C2208 = khaNangTaiTrong_C2208*1000;
 console.log(`
-  Ctt < C (18978.9 < ${khaNangTaiTrong_C2208}) => Ổ lăn đã chọn thỏa tải trọng động
+  Ctt < C (${khaNangTaiTrongDong_Ctt} < ${khaNangTaiTrong_C2208}) => Ổ lăn đã chọn thỏa tải trọng động
 `)
 
 // Theo bảng tra ta có C = 26500 (N)
@@ -320,26 +321,26 @@ console.log(`Tuổi thọ tính bằng giờ Lh = ${tuoiThoTinhBangGio_Lh} (gi�
 // Chương 4 phần 2
 // Truc II
 
-const soVongQuay_n2 = 87.66;
+const soVongQuay_n2 = 58.12541554 ;
 const thoiGianLamViec_Lh2 = 4000;
 
-const RDx = 7362.5; //5.2 chuong 3
-const RDy = 5476.22; //5.2 chuong 3
+const RDx = 7051.361605; //5.2 chuong 3
+const RDy = 4330.943197; //5.2 chuong 3
 
 const lucHuongTam_FDr = parseFloat(Math.sqrt(RDx**2 + RDy**2).toFixed(2));
 console.log(`Lực hướng tâm F_Dr = ${lucHuongTam_FDr} (N)`);
 
-const RGx = 5656.74; //5.2 chuong 3
-const RGy = 12230.93; //5.2 chuong 3
+const RGx = 5369.431765; //5.2 chuong 3
+const RGy = 12151.96124; //5.2 chuong 3
 
 const lucHuongTam_FGr = parseFloat(Math.sqrt(RGx**2 + RGy**2).toFixed(2));
 console.log(`Lực hướng tâm F_Gr = ${lucHuongTam_FGr} (N)`);
 
-lucDocTrucBanhVit_Fa2  = 2905.04; // 2.12 chuong 2
+lucDocTrucBanhVit_Fa2  = 4362.38071; // 2.12 chuong 2
 Fa = lucDocTrucBanhVit_Fa2;
 console.log(`Fa = ${Fa} (N)`);
 
-const duongKinhNgongTruc_d2 = 60;
+const duongKinhNgongTruc_d2 = 70;
 
 // Lấy từ bảng ra
 const d2 = 70;
@@ -359,7 +360,7 @@ const heSoTaiDocTruc_e2 = parseFloat((1.5*Math.tan(degreeToRadian(alpha_2))).toF
 console.log(`Hệ số tải dọc trục e = ${heSoTaiDocTruc_e2}`);
 
 const lucDocTrucPhu_S1_2 = parseFloat((0.83 * heSoTaiDocTruc_e2 * lucHuongTam_FDr).toFixed(2));
-console.log(`Lực dọc trục phụ S2 = ${lucDocTrucPhu_S1_2} (N)`);
+console.log(`Lực dọc trục phụ S1 = ${lucDocTrucPhu_S1_2} (N)`);
 
 const lucDocTrucPhu_S2_2= parseFloat((0.83 * heSoTaiDocTruc_e2 * lucHuongTam_FGr).toFixed(2));
 console.log(`Lực dọc trục phụ S2 = ${lucDocTrucPhu_S2_2} (N)`);
