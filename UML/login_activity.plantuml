@@ -1,0 +1,35 @@
+@startuml
+|Người dùng|
+start
+:Nhấn nút "Đăng ký";
+
+|Giao diện|
+:Hiển thị form đăng ký;
+
+|Người dùng|
+:Nhập thông tin đăng ký;
+
+|Giao diện|
+:Kiểm tra định dạng dữ liệu;
+
+if (Dữ liệu hợp lệ?) then (yes)
+  |Cơ sở dữ liệu|
+  :Kiểm tra email đã tồn tại?;
+
+  if (Email chưa tồn tại?) then (yes)
+    :Lưu thông tin người dùng;
+    |Giao diện|
+    :Thông báo đăng ký thành công;
+  else (no)
+    |Giao diện|
+    :Thông báo email đã tồn tại;
+  endif
+
+else (no)
+  |Giao diện|
+  :Thông báo lỗi định dạng;
+endif
+
+|Người dùng|
+stop
+@enduml

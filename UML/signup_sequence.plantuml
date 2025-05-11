@@ -10,16 +10,14 @@ UI -> UI : Kiểm tra định dạng dữ liệu
 
 alt Dữ liệu hợp lệ
     UI -> DB : Kiểm tra email đã tồn tại
-    DB --> UI : Email hợp lệ/chưa tồn tại
-
-    UI -> DB : Lưu thông tin người dùng
-    DB --> UI : OK
-
-    UI -> DB : Tạo và gửi mã xác thực email
-    DB --> UI : Đã gửi email xác minh
-
-    UI -> User : Thông báo đăng ký thành công\nVui lòng xác thực email
+    alt Email chưa tồn tại
+        UI -> DB : Lưu thông tin người dùng
+        DB --> UI : OK
+        UI -> User : Thông báo đăng ký thành công
+    else Email đã tồn tại
+        UI -> User : Thông báo email đã tồn tại
+    end
 else Dữ liệu không hợp lệ
-    UI -> User : Thông báo lỗi định dạng/email tồn tại
+    UI -> User : Thông báo lỗi định dạng
 end
 @enduml

@@ -1,0 +1,6 @@
+@startuml
+actor User
+
+User --> (View calculation history)
+(View calculation history) .> (View details of a calculation) : <<extend>>
+@enduml

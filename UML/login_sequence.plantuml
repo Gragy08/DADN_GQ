@@ -14,11 +14,10 @@ alt Dữ liệu hợp lệ
 
     alt Tài khoản tồn tại
         UI -> DB : So sánh mật khẩu
-        DB --> UI : Kết quả đúng/sai
+        DB --> UI : Mật khẩu đúng/sai
 
         alt Mật khẩu đúng
-            UI -> DB : Kiểm tra trạng thái xác thực
-            DB --> UI : Đã xác thực / chưa xác thực
+            UI -> User : Chuyển đến trang chính
         else Mật khẩu sai
             UI -> User : Thông báo sai mật khẩu
         end
