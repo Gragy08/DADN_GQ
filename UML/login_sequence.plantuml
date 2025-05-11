@@ -1,0 +1,31 @@
+@startuml
+actor "Người dùng" as User
+participant "Giao diện" as UI
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI : Nhấn nút "Đăng nhập"
+UI -> User : Hiển thị form đăng nhập
+User -> UI : Nhập email và mật khẩu
+UI -> UI : Kiểm tra định dạng dữ liệu
+
+alt Dữ liệu hợp lệ
+    UI -> DB : Tìm tài khoản theo email
+    DB --> UI : Trả về tài khoản (nếu có)
+
+    alt Tài khoản tồn tại
+        UI -> DB : So sánh mật khẩu
+        DB --> UI : Kết quả đúng/sai
+
+        alt Mật khẩu đúng
+            UI -> DB : Kiểm tra trạng thái xác thực
+            DB --> UI : Đã xác thực / chưa xác thực
+        else Mật khẩu sai
+            UI -> User : Thông báo sai mật khẩu
+        end
+    else Tài khoản không tồn tại
+        UI -> User : Thông báo tài khoản không tồn tại
+    end
+else Dữ liệu không hợp lệ
+    UI -> User : Thông báo lỗi định dạng
+end
+@enduml

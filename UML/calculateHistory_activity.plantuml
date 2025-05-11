@@ -1,0 +1,31 @@
+@startuml
+|User|
+start
+:Chọn "Lịch sử tính toán" từ menu;
+
+|UI|
+:Hiển thị trang lịch sử;
+:Truy vấn dữ liệu lịch sử;
+
+|Database|
+:Trả về danh sách phép tính;
+
+|UI|
+if (Có dữ liệu?) then (Yes)
+  :Hiển thị danh sách phép tính;
+  :Hiển thị bộ lọc thời gian;
+  if (Người dùng chọn phép tính) then (Yes)
+    :Hiển thị chi tiết phép tính;
+  endif
+  if (Người dùng chọn xoá phép tính) then (Yes)
+    :Gửi yêu cầu xoá;
+    |Database|
+    :Xoá phép tính;
+    |UI|
+    :Cập nhật danh sách;
+  endif
+else (No)
+  :Hiển thị thông báo "Chưa có lịch sử tính toán";
+endif
+stop
+@enduml

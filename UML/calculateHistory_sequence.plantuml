@@ -1,0 +1,28 @@
+@startuml
+actor "Người dùng" as User
+participant "Giao diện" as UI
+database "Cơ sở dữ liệu" as DB
+
+User -> UI: Mở trang "Lịch sử tính toán"
+UI -> DB: Truy vấn danh sách phép tính
+DB --> UI: Trả về danh sách phép tính
+UI -> User: Hiển thị danh sách + bộ lọc
+
+alt Người dùng chọn phép tính
+  User -> UI: Nhấn "Xem chi tiết"
+  UI -> DB: Lấy chi tiết phép tính
+  DB --> UI: Trả chi tiết
+  UI -> User: Hiển thị chi tiết phép tính
+end
+
+alt Người dùng chọn xoá phép tính
+  User -> UI: Nhấn "Xoá"
+  UI -> DB: Thực hiện xoá phép tính
+  DB --> UI: Xác nhận xoá
+  UI -> User: Cập nhật danh sách phép tính
+end
+
+alt Không có dữ liệu
+  UI -> User: Thông báo "Chưa có lịch sử tính toán"
+end
+@enduml

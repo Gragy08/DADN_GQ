@@ -1,0 +1,38 @@
+@startuml
+|Người dùng|
+start
+:Nhấn nút "Đăng nhập";
+|Giao diện|
+:Hiển thị form đăng nhập;
+|Người dùng|
+:Nhập email và mật khẩu;
+|Giao diện|
+:Kiểm tra định dạng dữ liệu;
+if (Dữ liệu hợp lệ?) then (yes)
+  |Cơ sở dữ liệu|
+  :Tìm tài khoản theo email;
+  if (Tài khoản tồn tại?) then (yes)
+    :So sánh mật khẩu;
+    if (Mật khẩu đúng?) then (yes)
+      if (Tài khoản đã xác thực?) then (yes)
+        |Giao diện|
+        :Chuyển đến trang chủ;
+      else (no)
+        |Giao diện|
+        :Yêu cầu xác thực email;
+      endif
+    else (no)
+      |Giao diện|
+      :Thông báo sai mật khẩu;
+    endif
+  else (no)
+    |Giao diện|
+    :Thông báo tài khoản không tồn tại;
+  endif
+else (no)
+  |Giao diện|
+  :Thông báo lỗi định dạng;
+endif
+|Người dùng|
+stop
+@enduml
